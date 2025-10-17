@@ -32,7 +32,7 @@ typedef struct struct_message {
   bool e;
 } struct_message;
  
-// Создаем структуру сообщения myData
+// Создаем структуру сообщение myData
 struct_message myData;
  
 // Обратная функция отправки
@@ -54,7 +54,7 @@ void setup() {
     return;
   }
  
-  // Регистрируем отправку сообщения
+  // Регистрируем отправку сообщение
   esp_now_register_send_cb(OnDataSent);
   
   // Указываем получателя
