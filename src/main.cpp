@@ -72,7 +72,7 @@ void setup() {
 void loop() {
   // Указываем данные, которые будем отправлять
   strcpy(myData.a, "a");
-  myData.b = random(1,20);
+  myData.b = random(1,20);// оставал старое
   myData.c = tmp.gettemp();
   myData.d = "Vanna";
   myData.e = false;
