@@ -24,7 +24,7 @@ uint8_t broadcastAddress[] = {0xE8, 0x6B, 0xEA, 0xD4, 0x1F, 0x8C};
 //--------------------------------------------
 #include <OneWire.h>
 
-OneWire ds(8); // Объект OneWire
+OneWire ds(10); // Объект OneWire
 
 int temperature = 0; // Глобальная переменная для хранения значение температуры с датчика DS18B20
 
