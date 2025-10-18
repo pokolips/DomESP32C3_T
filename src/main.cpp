@@ -24,7 +24,7 @@ uint8_t broadcastAddress[] = {0xE8, 0x6B, 0xEA, 0xD4, 0x1F, 0x8C};
 //--------------------------------------------
 #include <OneWire.h>
 
-OneWire ds(10); // Объект OneWire
+OneWire ds(4); // Объект OneWire
 
 int temperature = 0; // Глобальная переменная для хранения значение температуры с датчика DS18B20
 
@@ -86,13 +86,13 @@ void setup() {
  
 void loop() {
 
-    detectTemperature(); // Определяем температуру от датчика DS18b20
+  detectTemperature(); // Определяем температуру от датчика DS18b20
   Serial.println(temperature); // Выводим полученное значение температуры
   // Т.к. переменная temperature имеет тип int, дробная часть будет просто
   // Указываем данные, которые будем отправлять
   strcpy(myData.a, "a");
   myData.b = random(1,20);// оставал старое
-  myData.c = 10.2;
+  myData.c = temperature;//10.2;
   myData.d = "Vanna";
   myData.e = false;
  
