@@ -1,8 +1,9 @@
 #pragma once
 
-#include <GyverDS18.h>
+#include <DallasTemperature.h>
 
-GyverDS18Single ds(4);  // пин 4
+// Создаем объект OneWire
+OneWire oneWire(4);
 
 class Temperature
 {
