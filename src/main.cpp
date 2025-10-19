@@ -91,15 +91,19 @@ void loop() {
 
   //temperature = 
   temperature = detectTemperature(); // Определяем температуру от датчика DS18b20
+  
+  tmp.setVlagaMoj();
+  tmp.setVlagaVan();
 
- 
+  voda= tmp.getUzel();
+  
   // Т.к. переменная temperature имеет тип int, дробная часть будет просто
   // Указываем данные, которые будем отправлять
   strcpy(myData.a, "a");
   myData.b = random(1,20);// оставил старое
   myData.c = temperature;//10.2;
   myData.d = uzel();
-  myData.e = true;
+  myData.e = getVoda(voda);
  
   // Отправляем сообщение
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
@@ -134,15 +138,16 @@ int detectTemperature(){
     temperature = (data[1] << 8) + data[0]; temperature = temperature >> 4;
   } return temperature;
 }
-int getVoda() {
-  uint8_t vlaga = 0;
-  uint8_t vlaga1 = 0;
+bool getVoda(uint8_t vlaga) {
   bool flag;
-tmp.setVlagaMoj();
-tmp.setVlagaVan();
-voda= tmp.getUzel();
+  if(!vlaga){
+    flag = false;
+  } else flag = true;
+// tmp.setVlagaMoj();
+// tmp.setVlagaVan();
+// voda= tmp.getUzel();
 
-  return voda;
+  return flag;
 }
 
 String uzel(){

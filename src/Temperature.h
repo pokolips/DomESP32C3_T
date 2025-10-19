@@ -30,11 +30,13 @@ void setVlagaVan(){
    if(analogRead(vanRoom) < 700){
     _vodaV = 1;
   } else _vodaV = 0;
+  delay(20);
 }
 void setVlagaMoj(){
 if(analogRead(mojPlace) < 700){
     _vodaM = 1;
   } else _vodaM = 0;
+  delay(20);
 }
  uint8_t getUzel(){
 if(_vodaM == 1 && _vodaV == 1){
