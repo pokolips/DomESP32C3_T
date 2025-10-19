@@ -135,7 +135,7 @@ int detectTemperature(){
 int getVoda() {
   if(voda <= 500){
     // Написать
-  }
+  } return voda;
 }
 
 String uzel(){
@@ -145,7 +145,7 @@ String uzel(){
   case 1: pok = "Mojka"; break;
   case 2: pok = "Vanna"; break;
   default:pok = "Suho"; break;
-  }
+  } return pok;
 }
 /*
 #include <DallasTemperature.h>
