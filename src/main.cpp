@@ -95,7 +95,7 @@ void loop() {
   // Т.к. переменная temperature имеет тип int, дробная часть будет просто
   // Указываем данные, которые будем отправлять
   strcpy(myData.a, "a");
-  myData.b = random(1,20);// оставал старое
+  myData.b = random(1,20);// оставил старое
   myData.c = temperature;//10.2;
   myData.d = uzel();
   myData.e = true;
@@ -135,15 +135,15 @@ int detectTemperature(){
 }
 int getVoda() {
   int vlaga = 0;
+  int vlaga1 = 0;
 
   if(analogRead(vanRoom)<700){
-    voda = 1;
-  } else voda = 0;
-  if(analogRead(mojPlace)<700){
-    voda = 2;
+    vlaga = 1;
+  } else if(analogRead(mojPlace)<700){
+    vlaga = 2;
     // Написать
-  } else voda = 0; 
-  return voda;
+  } else vlaga = 0; 
+  return vlaga;
 }
 
 String uzel(){
