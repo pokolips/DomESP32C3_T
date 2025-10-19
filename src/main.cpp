@@ -1,6 +1,4 @@
-#include <Arduino.h>
-#include"Temperature.h"
-//#include <DallasTemperature.h>
+
 
 /*
   Rui Santos
@@ -12,19 +10,20 @@
   The above copyright notice and this permission notice shall be included in all
   copies or substantial portions of the Software.
 */
- 
+//#include <DallasTemperature.h>
+#include <Arduino.h>
+#include"Temperature.h"
 #include <esp_now.h>
 #include <WiFi.h>
- 
-// ЗАМЕНИТЕ МАС-АДРЕСОМ ПЛАТЫ-ПОЛУЧАТЕЛЯ
-uint8_t broadcastAddress[] = {0xE8, 0x6B, 0xEA, 0xD4, 0x1F, 0x8C};
- //E8:6B:EA:D4:1F:8C
-// Номер пина Arduino с подключенным датчиком
-
-//--------------------------------------------
 #include <OneWire.h>
 
+// ЗАМЕНИТЕ МАС-АДРЕСОМ ПЛАТЫ-ПОЛУЧАТЕЛЯ
+uint8_t broadcastAddress[] = {0xE8, 0x6B, 0xEA, 0xD4, 0x1F, 0x8C};
+
+// Номер пина Arduino с подключенным датчиком
 OneWire ds(4); // Объект OneWire
+
+//--------------------------------------------
 
 int temperature = 0; // Глобальная переменная для хранения значение температуры с датчика DS18B20
 
@@ -38,7 +37,6 @@ const int TEMP_UPDATE_TIME = 1000; // Определяем периодично�
 int detectTemperature();
 bool getVoda(uint8_t vlaga);
 String uzel();
-
 
 Temperature tmp;
 
