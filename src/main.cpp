@@ -34,13 +34,14 @@ const int TEMP_UPDATE_TIME = 1000; // Определяем периодично�
 
 
  float tmor = 0;
+ int voda = 1000;
 int detectTemperature();
 //Temperature tmp;
 
 // Структура в скетче платы-отправителя
 // должна совпадать с оной для получателя
 typedef struct struct_message {
-  char a [2];//[32];
+  char a [32];//[32];
   int b;
   float c;
   String d;
@@ -87,15 +88,16 @@ void setup() {
 void loop() {
 
   //temperature = 
-  detectTemperature(); // Определяем температуру от датчика DS18b20
-  Serial.println(temperature); // Выводим полученное значение температуры
+  temperature = detectTemperature(); // Определяем температуру от датчика DS18b20
+
+ 
   // Т.к. переменная temperature имеет тип int, дробная часть будет просто
   // Указываем данные, которые будем отправлять
   strcpy(myData.a, "a");
   myData.b = random(1,20);// оставал старое
   myData.c = temperature;//10.2;
   myData.d = "Vanna";
-  myData.e = false;
+  myData.e = true;
  
   // Отправляем сообщение
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
@@ -106,8 +108,10 @@ void loop() {
   else {
     Serial.println("Error sending the data");
   }
-  delay(2000);
+  delay(5000);
 }  
+
+
 int detectTemperature(){
 
   byte data[2];
@@ -127,8 +131,22 @@ int detectTemperature(){
     // Формируем значение
     temperature = (data[1] << 8) + data[0]; temperature = temperature >> 4;
   } return temperature;
-} 
+}
+int getVoda() {
+  if(voda <= 500){
+    // Написать код
+  }
+}
 
+String uzel(){
+  String pok;
+  switch (voda)
+  {
+  case 1: pok = "Mojka"; break;
+  case 2: pok = "Vanna"; break;
+  default:pok = "Suho"; break;
+  }
+}
 /*
 #include <DallasTemperature.h>
 
