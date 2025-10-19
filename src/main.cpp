@@ -86,7 +86,8 @@ void setup() {
  
 void loop() {
 
-  temperature = detectTemperature(); // Определяем температуру от датчика DS18b20
+  //temperature = 
+  detectTemperature(); // Определяем температуру от датчика DS18b20
   Serial.println(temperature); // Выводим полученное значение температуры
   // Т.к. переменная temperature имеет тип int, дробная часть будет просто
   // Указываем данные, которые будем отправлять
@@ -125,7 +126,7 @@ int detectTemperature(){
 
     // Формируем значение
     temperature = (data[1] << 8) + data[0]; temperature = temperature >> 4;
-  }
+  } return temperature;
 } 
 
 /*
