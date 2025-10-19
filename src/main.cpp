@@ -31,11 +31,12 @@ int temperature = 0; // Глобальная переменная для хра�
 long lastUpdateTime = 0; // Переменная для хранения времени последнего считывания с датчика
 const int TEMP_UPDATE_TIME = 1000; // Определяем периодичность проверок
 
-
-
+const uint8_t vanRoom = 1;
+const uint8_t mojPlace = 3;
  float tmor = 0;
  int voda = 1000;
 int detectTemperature();
+String uzel();
 //Temperature tmp;
 
 // Структура в скетче платы-отправителя
@@ -96,7 +97,7 @@ void loop() {
   strcpy(myData.a, "a");
   myData.b = random(1,20);// оставал старое
   myData.c = temperature;//10.2;
-  myData.d = "Vanna";
+  myData.d = uzel();
   myData.e = true;
  
   // Отправляем сообщение
@@ -133,9 +134,16 @@ int detectTemperature(){
   } return temperature;
 }
 int getVoda() {
-  if(voda <= 500){
+  int vlaga = 0;
+
+  if(analogRead(vanRoom)<700){
+    voda = 1;
+  } else voda = 0;
+  if(analogRead(mojPlace)<700){
+    voda = 2;
     // Написать
-  } return voda;
+  } else voda = 0; 
+  return voda;
 }
 
 String uzel(){
