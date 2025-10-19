@@ -1,5 +1,5 @@
 #include <Arduino.h>
-//#include"Temperature.h"
+#include"Temperature.h"
 //#include <DallasTemperature.h>
 
 /*
@@ -37,7 +37,8 @@ const uint8_t mojPlace = 3;
  int voda = 1000;
 int detectTemperature();
 String uzel();
-//Temperature tmp;
+
+Temperature tmp;
 
 // Структура в скетче платы-отправителя
 // должна совпадать с оной для получателя
@@ -134,16 +135,16 @@ int detectTemperature(){
   } return temperature;
 }
 int getVoda() {
-  int vlaga = 0;
-  int vlaga1 = 0;
+  //int vlaga = 0;
+  //int vlaga1 = 0;
 
   if(analogRead(vanRoom)<700){
-    vlaga = 1;
+    voda= 1;
   } else if(analogRead(mojPlace)<700){
-    vlaga = 2;
+    voda = 2;
     // Написать
-  } else vlaga = 0; 
-  return vlaga;
+  } else voda = 0; 
+  return voda;
 }
 
 String uzel(){
