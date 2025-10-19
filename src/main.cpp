@@ -73,7 +73,8 @@ void setup() {
     Serial.println("Error initializing ESP-NOW");
     return;
   }
- 
+ pinMode(1, INPUT_PULLUP);
+ pinMode(3, INPUT_PULLUP);   
   // Регистрируем отправку сообщение
   esp_now_register_send_cb(OnDataSent);
   
