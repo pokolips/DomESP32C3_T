@@ -17,10 +17,37 @@ class Temperature
 {
 private:
   float _termo = 10;
-  int _voda = 0;
-  int pinSensor = 1;
-public:
+  uint8_t _vodaV = 0;
+  uint8_t _vodaM = 0;
+  uint8_t _voda = 0;
+  const uint8_t vanRoom = 1;
+const uint8_t mojPlace = 3;
+  int pinSensorV = 1;
+  int pinSensorM = 3;
 
+public:
+void setVlagaVan(){
+   if(analogRead(vanRoom) < 700){
+    _vodaV = 1;
+  } else _vodaV = 0;
+}
+void setVlagaMoj(){
+if(analogRead(mojPlace) < 700){
+    _vodaM = 1;
+  } else _vodaM = 0;
+}
+ uint8_t getUzel(){
+if(_vodaM == 1 && _vodaV == 1){
+  _voda = 3;
+} else if(_vodaM == 1){
+  _voda = 2;
+} if( _vodaV == 1){
+  _voda = 1;
+} else if( _vodaV == 0 && _vodaM== 0 ){
+  _voda = 0;}
+
+    return _voda;
+ }
 // void settemp() {
 //     ds.requestTemp();  // первый запрос на измерение
 // }

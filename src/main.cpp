@@ -31,8 +31,8 @@ int temperature = 0; // Глобальная переменная для хра�
 long lastUpdateTime = 0; // Переменная для хранения времени последнего считывания с датчика
 const int TEMP_UPDATE_TIME = 1000; // Определяем периодичность проверок
 
-const uint8_t vanRoom = 1;
-const uint8_t mojPlace = 3;
+// const uint8_t vanRoom = 1;
+// const uint8_t mojPlace = 3;
  float tmor = 0;
  int voda = 1000;
 int detectTemperature();
@@ -135,15 +135,13 @@ int detectTemperature(){
   } return temperature;
 }
 int getVoda() {
-  //int vlaga = 0;
-  //int vlaga1 = 0;
+  uint8_t vlaga = 0;
+  uint8_t vlaga1 = 0;
+  bool flag;
+tmp.setVlagaMoj();
+tmp.setVlagaVan();
+voda= tmp.getUzel();
 
-  if(analogRead(vanRoom)<700){
-    voda= 1;
-  } else if(analogRead(mojPlace)<700){
-    voda = 2;
-    // Написать
-  } else voda = 0; 
   return voda;
 }
 
@@ -153,6 +151,7 @@ String uzel(){
   {
   case 1: pok = "Mojka"; break;
   case 2: pok = "Vanna"; break;
+  case 3: pok = " Dubl"; break;
   default:pok = "Suho"; break;
   } return pok;
 }
