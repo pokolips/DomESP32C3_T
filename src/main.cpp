@@ -36,7 +36,9 @@ const int TEMP_UPDATE_TIME = 1000; // Определяем периодично�
  float tmor = 0;
  int voda = 1000;
 int detectTemperature();
+bool getVoda(uint8_t vlaga);
 String uzel();
+
 
 Temperature tmp;
 
@@ -100,7 +102,7 @@ void loop() {
   // Т.к. переменная temperature имеет тип int, дробная часть будет просто
   // Указываем данные, которые будем отправлять
   strcpy(myData.a, "a");
-  myData.b = random(1,20);// оставил старое
+  myData.b = tmp.getSensor();// оставил старое
   myData.c = temperature;//10.2;
   myData.d = uzel();
   myData.e = getVoda(voda);

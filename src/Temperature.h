@@ -24,8 +24,16 @@ private:
 const uint8_t mojPlace = 3;
   int pinSensorV = 1;
   int pinSensorM = 3;
+  int _vlaga = 1000;
 
 public:
+int getSensor(){
+analogRead (pinSensorV);
+if (analogRead (pinSensorV) > 1000){
+_vlaga = 1000;
+} return _vlaga;
+
+}
 void setVlagaVan(){
    if(analogRead(vanRoom) < 700){
     _vodaV = 1;
