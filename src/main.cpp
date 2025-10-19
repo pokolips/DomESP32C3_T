@@ -134,7 +134,7 @@ int detectTemperature(){
 }
 int getVoda() {
   if(voda <= 500){
-    // Написать код
+    // Написать
   }
 }
 
