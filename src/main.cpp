@@ -8,7 +8,6 @@
   The above copyright notice and this permission notice shall be included in all
   copies or substantial portions of the Software.
 */
-<<<<<<< HEAD
 //#include <DallasTemperature.h>
 #include <Arduino.h>
 #include"Temperature.h"
@@ -16,14 +15,6 @@
 #include <WiFi.h>
 #include <OneWire.h>
 
-=======
-//#include"Temperature.h"
-//#include <DallasTemperature.h>
-#include <Arduino.h>
-#include <esp_now.h>
-#include <WiFi.h>
-#include <OneWire.h> 
->>>>>>> e0f2fc8d4d0370b25dab32eeeed7fcc4f91c7a6d
 // ЗАМЕНИТЕ МАС-АДРЕСОМ ПЛАТЫ-ПОЛУЧАТЕЛЯ
 uint8_t broadcastAddress[] = {0xE8, 0x6B, 0xEA, 0xD4, 0x1F, 0x8C};
 
@@ -31,28 +22,16 @@ uint8_t broadcastAddress[] = {0xE8, 0x6B, 0xEA, 0xD4, 0x1F, 0x8C};
 OneWire ds(4); // Объект OneWire
 
 //--------------------------------------------
-<<<<<<< HEAD
 
 int temperature = 0; // Глобальная переменная для хранения значение температуры с датчика DS18B20
-=======
->>>>>>> e0f2fc8d4d0370b25dab32eeeed7fcc4f91c7a6d
 
 long lastUpdateTime = 0; // Переменная для хранения времени последнего считывания с датчика
 const int TEMP_UPDATE_TIME = 1000; // Определяем периодичность проверок
 
-<<<<<<< HEAD
 // const uint8_t vanRoom = 1;
 // const uint8_t mojPlace = 3;
  float tmor = 0;
  int voda = 1000;
-=======
-const uint8_t vanRoom = 1;
-const uint8_t mojPlace = 3;
-float tmor = 0;
-int temperature = 0; // Глобальная переменная для хранения значение температуры с датчика DS18B20
-int voda = 1000;
-
->>>>>>> e0f2fc8d4d0370b25dab32eeeed7fcc4f91c7a6d
 int detectTemperature();
 bool getVoda(uint8_t vlaga);
 String uzel();
@@ -121,11 +100,7 @@ void loop() {
   myData.b = tmp.getSensor();// оставил старое
   myData.c = temperature;//10.2;
   myData.d = uzel();
-<<<<<<< HEAD
   myData.e = getVoda(voda);
-=======
-  myData.e = getVoda();
->>>>>>> e0f2fc8d4d0370b25dab32eeeed7fcc4f91c7a6d
  
   // Отправляем сообщение
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
@@ -160,7 +135,6 @@ int detectTemperature(){
     temperature = (data[1] << 8) + data[0]; temperature = temperature >> 4;
   } return temperature;
 }
-<<<<<<< HEAD
 bool getVoda(uint8_t vlaga) {
   bool flag;
   if(!vlaga){
@@ -171,22 +145,6 @@ bool getVoda(uint8_t vlaga) {
 // voda= tmp.getUzel();
 
   return flag;
-=======
-bool getVoda() {
-  bool vlaga = 0;
-
-  if(analogRead(vanRoom)<700){
-    voda = 1;
-    vlaga = 1;
-  } else voda = 0;
-  if(analogRead(mojPlace)<700){
-    voda = 2;
-    vlaga = 1;
-    // Написать
-  } else {voda = 0;
-    vlaga = 0;} 
-  return vlaga;
->>>>>>> e0f2fc8d4d0370b25dab32eeeed7fcc4f91c7a6d
 }
 
 String uzel(){
