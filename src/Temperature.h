@@ -21,42 +21,49 @@ private:
   uint8_t _vodaM = 0;
   uint8_t _voda = 0;
   const uint8_t vanRoom = 1;
-const uint8_t mojPlace = 3;
+  const uint8_t mojPlace = 3;
   int pinSensorV = 1;
   int pinSensorM = 3;
   int _vlaga = 1000;
 
 public:
-int getSensor(){
-analogRead (pinSensorV);
-if (analogRead (pinSensorV) > 1000){
-_vlaga = 1000;
-} return _vlaga;
 
+int getSensor(){
+        analogRead (pinSensorV);
+    if (analogRead (pinSensorV) > 1000){
+        _vlaga = 1000;
+    } return _vlaga;
+}
+
+int getSensor1(){
+        analogRead (pinSensorM);
+    if (analogRead (pinSensorM) > 1000){
+        _vlaga = 1000;
+    } return _vlaga;
 }
 void setVlagaVan(){
-   if(analogRead(vanRoom) < 700){
-    _vodaV = 1;
-  } else _vodaV = 0;
-  delay(20);
+    if(analogRead(vanRoom) < 700){
+        _vodaV = 1;
+    } else _vodaV = 0;
+        delay(20);
 }
 void setVlagaMoj(){
-if(analogRead(mojPlace) < 700){
-    _vodaM = 1;
-  } else _vodaM = 0;
-  delay(20);
+    if(analogRead(mojPlace) < 700){
+        _vodaM = 1;
+      } else _vodaM = 0;
+        delay(20);
 }
  uint8_t getUzel(){
-if(_vodaM == 1 && _vodaV == 1){
-  _voda = 3;
-} else if(_vodaM == 1){
-  _voda = 2;
-} if( _vodaV == 1){
-  _voda = 1;
-} else if( _vodaV == 0 && _vodaM== 0 ){
-  _voda = 0;}
-
-    return _voda;
+    if(_vodaM == 1 && _vodaV == 1){
+      _voda = 3;
+    } else if(_vodaM == 1){
+        _voda = 2;
+      } 
+    if( _vodaV == 1){
+        _voda = 1;
+    } else if( _vodaV == 0 && _vodaM== 0 ){
+        _voda = 0;
+      }   return _voda;
  }
 // void settemp() {
 //     ds.requestTemp();  // первый запрос на измерение

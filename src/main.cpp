@@ -69,6 +69,7 @@ void setup() {
     Serial.println("Error initializing ESP-NOW");
     return;
   }
+
  pinMode(1, INPUT_PULLUP);
  pinMode(3, INPUT_PULLUP);   
   // Регистрируем отправку сообщение
@@ -98,6 +99,9 @@ void loop() {
   // Указываем данные, которые будем отправлять
   strcpy(myData.a, "a");
   myData.b = tmp.getSensor();// оставил старое
+  delay(3000);
+  myData.b = tmp.getSensor1();// оставил старое
+  delay(3000);
   myData.c = temperature;//10.2;
   myData.d = uzel();
   myData.e = getVoda(voda);
