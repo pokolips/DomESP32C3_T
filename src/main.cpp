@@ -70,8 +70,8 @@ void setup() {
     return;
   }
 
- pinMode(1, INPUT_PULLUP);
- pinMode(3, INPUT_PULLUP);   
+ pinMode(1, INPUT);
+ pinMode(3, INPUT);   
   // Регистрируем отправку сообщение
   esp_now_register_send_cb(OnDataSent);
   
