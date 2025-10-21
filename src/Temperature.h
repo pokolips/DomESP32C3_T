@@ -29,15 +29,15 @@ private:
 public:
 
 int getSensor(){
-        analogRead (vanRoom);
-    if (analogRead (vanRoom) > 1000){
+        _vlaga = analogRead (vanRoom);
+    if (_vlaga > 1000){
         _vlaga = 1000;
     } return _vlaga;
 }
 
 int getSensor1(){
-        analogRead (mojPlace);
-    if (analogRead (mojPlace) > 1000){
+        _vlaga = analogRead (mojPlace);
+    if (_vlaga > 1000){
         _vlaga = 1000;
     } return _vlaga;
 }
