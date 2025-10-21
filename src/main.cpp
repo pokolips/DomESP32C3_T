@@ -19,7 +19,7 @@
 uint8_t broadcastAddress[] = {0xE8, 0x6B, 0xEA, 0xD4, 0x1F, 0x8C};
 
 // Номер пина Arduino с подключенным датчиком
-OneWire ds(4); // Объект OneWire
+OneWire ds(10); // Объект OneWire
 
 //--------------------------------------------
 
