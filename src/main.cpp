@@ -155,8 +155,8 @@ String uzel(){
   String pok;
   switch (voda)
   {
-  case 1: pok = "Mojka"; break;
-  case 2: pok = "Vanna"; break;
+  case 1: pok = "Vanna"; break;
+  case 2: pok = "Mojka"; break;
   case 3: pok = " Dubl"; break;
   default:pok = "Suho"; break;
   } return pok;
