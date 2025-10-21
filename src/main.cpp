@@ -99,8 +99,10 @@ void loop() {
   // Указываем данные, которые будем отправлять
   strcpy(myData.a, "a");
   myData.b = tmp.getSensor();// оставил старое
+  Serial.println("getSensor Vanna");  // Потом убрать
   delay(3000);
   myData.b = tmp.getSensor1();// оставил старое
+  Serial.println("getSensor Mojka"); // Потом убрать
   delay(3000);
   myData.c = temperature;//10.2;
   myData.d = uzel();
