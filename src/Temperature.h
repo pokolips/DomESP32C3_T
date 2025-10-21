@@ -22,22 +22,22 @@ private:
   uint8_t _voda = 0;
   const uint8_t vanRoom = 1;
   const uint8_t mojPlace = 3;
-  int pinSensorV = 1;
-  int pinSensorM = 3;
+  //int pinSensorV = 1;
+  //int pinSensorM = 3;
   int _vlaga = 1000;
 
 public:
 
 int getSensor(){
-        analogRead (pinSensorV);
-    if (analogRead (pinSensorV) > 1000){
+        analogRead (vanRoom);
+    if (analogRead (vanRoom) > 1000){
         _vlaga = 1000;
     } return _vlaga;
 }
 
 int getSensor1(){
-        analogRead (pinSensorM);
-    if (analogRead (pinSensorM) > 1000){
+        analogRead (mojPlace);
+    if (analogRead (mojPlace) > 1000){
         _vlaga = 1000;
     } return _vlaga;
 }
