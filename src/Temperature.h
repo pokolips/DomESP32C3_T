@@ -27,40 +27,43 @@ private:
   int _vlaga = 1000;
 
 public:
-
+//Чтение датчика влажности под ванной 
 int getSensor(){
         _vlaga = analogRead (vanRoom);
     if (_vlaga > 1000){
         _vlaga = 1000;
     } return _vlaga;
 }
-
+//Чтение датчика влажности пространства под мойкой
 int getSensor1(){
         _vlaga = analogRead (mojPlace);
     if (_vlaga > 1000){
         _vlaga = 1000;
     } return _vlaga;
 }
+//Установка уровня срабатывания датчика влажности под ванной
 void setVlagaVan(){
     if(analogRead(vanRoom) < 700){
         _vodaV = 1;
     } else _vodaV = 0;
         delay(20);
 }
+//Установка уровня срабатывания датчика влажности под мщйкой
 void setVlagaMoj(){
     if(analogRead(mojPlace) < 700){
         _vodaM = 1;
       } else _vodaM = 0;
         delay(20);
 }
+// Отправка состояния датчиков
  uint8_t getUzel(){
     if(_vodaM == 1 && _vodaV == 1){
-      _voda = 3;
+      _voda = 3; // Влага на обоих датчиках
     } else if(_vodaM == 1){
-        _voda = 2;
+        _voda = 2; // Влага на датчике мойки
       } 
     if( _vodaV == 1){
-        _voda = 1;
+        _voda = 1; // Влага на датчике ванны
     } else if( _vodaV == 0 && _vodaM== 0 ){
         _voda = 0;
       }   return _voda;
