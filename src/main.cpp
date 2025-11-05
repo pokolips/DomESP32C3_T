@@ -41,9 +41,11 @@ Temperature tmp;
 // Структура в скетче платы-отправителя
 // должна совпадать с оной для получателя
 typedef struct struct_message {
-  char a [32];//[32];
+  char ob;
+  char a [10];//[32];
   int b;
   float c;
+  float c1;
   String d;
   bool e;
 } struct_message;
@@ -97,10 +99,9 @@ void loop() {
   
   // Т.к. переменная temperature имеет тип int, дробная часть будет просто
   // Указываем данные, которые будем отправлять
-  strcpy(myData.a, "a");
+  myData.ob = 'a';
+  strcpy(myData.a, "Vanna");
   myData.b = tmp.getSensor();// оставил старое
-  delay(3000);
-  myData.b = tmp.getSensor1();// оставил старое
   delay(3000);
   myData.c = temperature;//10.2;
   myData.d = uzel();
