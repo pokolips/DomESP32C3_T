@@ -45,7 +45,7 @@ typedef struct struct_message {
   char a [10];//[32];
   int b;
   float c;
-  float c1;
+  //float c1;
   String d;
   bool e;
 } struct_message;
